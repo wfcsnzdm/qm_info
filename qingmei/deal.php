@@ -7,18 +7,17 @@ if ($_POST['submit']) {
 	$sex = hg_input_bb($_POST['user_sex']);
 	if($sex =='male')
 		$sex = "男";else $sex = "女";
-	$brithday = $_POST['user_brithday'];
+	// $brithday = $_POST['user_brithday'];
 	$phone = hg_input_bb($_POST['user_phone']);
 	$qq = hg_input_bb($_POST['user_qq']);
 	$grade = hg_input_bb($_POST['user_grade']);
 	$college = hg_input_bb($_POST['user_college']);
 	$major = hg_input_bb($_POST['user_major']);
-	echo $name.$sex.$brithday.$phone.$qq.$grade.$major;
-	if (!empty($name) && !empty($sex) && !empty($brithday) && !empty($phone) && !empty($qq) && !empty($grade) && !empty($college)){
+	if (!empty($name) && !empty($sex) && !empty($phone) && !empty($qq) && !empty($grade) && !empty($college)){
 		$sql = "SELECT * FROM info WHERE user_name='$name' and user_phone=$phone";
 		$data = mysql_query($sql);
 		if(mysql_num_rows($data) == 0){
-			$query = "INSERT INTO `info`(`user_id`, `user_name`, `user_sex`, `user_brithday`, `user_phone`, `user_qq`, `user_grade`, `user_college`,`user_major`) VALUES ('','$name','$sex',$brithday,'$phone','$qq','$grade','$college','$major')";
+			$query = "INSERT INTO `info`(`user_id`, `user_name`, `user_sex`, `user_phone`, `user_qq`, `user_grade`, `user_college`,`user_major`) VALUES ('','$name','$sex','$phone','$qq','$grade','$college','$major')";
 			mysql_query($query);
 			echo "<script>alert(\"成功提交信息\");</script>";
 			echo "<script language='javascript' type='text/javascript'>";
